@@ -5,5 +5,6 @@ FactoryGirl.define do
     job_title       { FFaker::Job.title }
     average_rate    { rand(0.1..5).round(1) }
     gender          { %w(male female).sample }
+    status          { Candidate::STATUS_VALUES.sample}
   end
 end
