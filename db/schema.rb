@@ -21,9 +21,9 @@ ActiveRecord::Schema.define(version: 20170406121841) do
     t.string   "job_title"
     t.float    "average_rate"
     t.string   "gender"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.string   "status",       default: "f"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "status"
   end
 
 end
