@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import CardBoard from './CardBoard.jsx'
 
 export default class Candidates extends React.Component {
 
@@ -23,31 +24,8 @@ export default class Candidates extends React.Component {
   render() {
     return (
       <div className="recruitment">
-        <div className="to-book">
-          { (this.filterByStatus("À Rencontrer")).map((candidate) => {
-              return (
-                <div key={candidate.id}>
-                  <div className="full-name">    { `${candidate.first_name} ${candidate.last_name}` } </div>
-                  <div className="job-title">    { candidate.job_title } </div>
-                  <div className="average-rate"> { candidate.average_rate } </div>
-                </div>
-              )
-            })
-          }
-        </div>
-
-        <div className="interview">
-          { (this.filterByStatus("Entretien")).map((candidate) => {
-              return (
-                <div key={candidate.id}>
-                  <div className="full-name">    { `${candidate.first_name} ${candidate.last_name}` } </div>
-                  <div className="job-title">    { candidate.job_title } </div>
-                  <div className="average-rate"> { candidate.average_rate } </div>
-                </div>
-              )
-            })
-          }
-        </div>
+        <CardBoard candidates={(this.filterByStatus("À Rencontrer"))} status="À Rencontrer" />
+        <CardBoard candidates={(this.filterByStatus("Entretien"))}    status="Entretien" />
       </div>
     );
   }
