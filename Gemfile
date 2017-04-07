@@ -16,7 +16,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'draper', '3.0.0.pre1'
 gem 'underscore-rails'
-
+gem 'semantic-ui-sass', git: 'https://github.com/doabit/semantic-ui-sass.git'
 
 gem 'react_on_rails', '~>6'
 

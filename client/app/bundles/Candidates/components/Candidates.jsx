@@ -17,15 +17,18 @@ export default class Candidates extends React.Component {
     var candidates = this.state.candidates
 
     return _.chain(candidates)
-      .filter((c) => { return c.status == status })
+      .filter((c) => { return c.status == status.status })
       .value()
   }
 
   render() {
     return (
       <div className="recruitment">
-        <CardBoard candidates={(this.filterByStatus("À Rencontrer"))} status="À Rencontrer" />
-        <CardBoard candidates={(this.filterByStatus("Entretien"))}    status="Entretien" />
+        {
+          ["À Rencontrer", "Entretien"].map((status, index) => {
+            return (<CardBoard candidates={(this.filterByStatus({status}))} status={status} key={index} />)
+          })
+        }
       </div>
     );
   }
