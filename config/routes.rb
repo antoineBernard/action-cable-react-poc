@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => "/cable"
+
   root to: 'hello_world#index'
   get 'hello_world', to: 'hello_world#index'
 
