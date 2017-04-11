@@ -10,6 +10,10 @@ export default class Card extends React.Component {
     var candidate = this.props.candidate
     return (
       <div className="card" key={candidate.id}>
+        <div className="ui bottom attached button">
+          <i className="add icon"></i>
+          étape précédente !
+        </div>
         <div className="content">
           <div className="header">{`${candidate.first_name} ${candidate.last_name}`}</div>
           <div className="description">
@@ -21,8 +25,8 @@ export default class Card extends React.Component {
           </span>
         </div>
         <div className="ui bottom attached button">
-          <i className="add icon"></i>
           étape suivante !
+          <i className="add icon"></i>
         </div>
       </div>
     );
