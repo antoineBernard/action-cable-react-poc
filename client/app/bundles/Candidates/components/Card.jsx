@@ -4,13 +4,24 @@ export default class Card extends React.Component {
 
   constructor(props, _railsContext) {
     super(props);
+
+    this.nextStep     = this.nextStep.bind(this)
+    this.previousStep = this.previousStep.bind(this)
+  }
+
+  nextStep () {
+    $.post(`/next_step/${this.props.candidate.id}`);
+  }
+
+  previousStep () {
+    $.post(`/previous_step/${this.props.candidate.id}`);
   }
 
   render() {
     var candidate = this.props.candidate
     return (
       <div className="card" key={candidate.id}>
-        <div className="ui bottom attached button">
+        <div className="ui bottom attached button" onClick={this.previousStep}>
           <i className="add icon"></i>
           étape précédente !
         </div>
@@ -24,7 +35,7 @@ export default class Card extends React.Component {
             {candidate.average_rate}
           </span>
         </div>
-        <div className="ui bottom attached button">
+        <div className="ui bottom attached button" onClick={this.nextStep}>
           étape suivante !
           <i className="add icon"></i>
         </div>
