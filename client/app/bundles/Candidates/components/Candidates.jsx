@@ -22,6 +22,7 @@ export default class Candidates extends React.Component {
 
     return _.chain(candidates)
       .filter((c) => { return c.status == status.status })
+      .sortBy((c) => { return c.updated_at })
       .value()
   }
 
