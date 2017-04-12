@@ -6,8 +6,4 @@ class CandidateChannel < ApplicationCable::Channel
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
   end
-
-  def next_step(data)
-    ActionCable.server.broadcast "candidate_channel", candidate: data['candidate']
-  end
 end

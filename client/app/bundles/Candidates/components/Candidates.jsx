@@ -25,23 +25,15 @@ export default class Candidates extends React.Component {
       .value()
   }
 
-  updateCandidateList(candidate) {
-    this.setState({ candidates: candidates });
-  }
-
   setupSubscription() {
-    App.Candidates = App.cable.subscriptions.create("CandidatesChannel", {
-      candidate_id: this.state.candidate.id,
-
-      connected: function () {
-        setTimeout(() => this.perform('follow', { message_id: this.candidate_id }), 1000);
+    App.candidate = App.cable.subscriptions.create("CandidateChannel", {
+      connected: () => {
+        /* Called when the subscription is ready for use on the server */
       },
 
-      received: function (data) {
-        this.updateCandidateList(data.candidate);
+      received: (data) => {
+        this.setState({ candidates: data.candidates })
       },
-
-      updateCandidateList: this.updateCandidateList.bind(this)
     });
   }
 

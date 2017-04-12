@@ -10,7 +10,7 @@ class CandidatesController < ApplicationController
     values   = Candidate::STATUS_VALUES
     new_index = values.find_index(candidate.status) + 1
 
-    candidate.update_attributes(status: values[new_index]) unless new_index > values.length
+    candidate.update_attributes(status: values[new_index]) unless new_index > values.length - 1
   end
 
 
