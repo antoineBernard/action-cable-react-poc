@@ -27,7 +27,6 @@ const cardTarget = {
 }))
 
 export default class CardBoard extends React.Component<Props> {
-
   constructor(props, _railsContext) {
     super(props);
   }
@@ -35,7 +34,6 @@ export default class CardBoard extends React.Component<Props> {
   render() {
     const { canDrop, isOver, connectDropTarget } = this.props;
     const isActive = canDrop && isOver;
-
 
     return connectDropTarget(
       <div className={`${this.props.status} ui cards`}>
@@ -45,9 +43,7 @@ export default class CardBoard extends React.Component<Props> {
             return <Card candidate={candidate} key={index} />
           })
         }
-        { isActive?
-          'Release to drop' : 'drag a card here'
-        }
+        { isActive? 'Release to drop' : 'drag a card here' }
       </div>
     );
   }

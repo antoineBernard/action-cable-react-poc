@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react';
 import { DragSource } from 'react-dnd';
 import ItemTypes from './ItemTypes';
 
-
 const cardSource = {
   beginDrag(props) {
     return {
