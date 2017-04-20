@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react';
-import CardBoard from './CardBoard.jsx'
+import { DragDropContextProvider } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
+import CardBoard from './CardBoard.jsx';
 
 export default class Candidates extends React.Component {
 
@@ -40,13 +42,17 @@ export default class Candidates extends React.Component {
 
   render() {
     return (
-      <div className="recruitment">
-        {
-          ["À Rencontrer", "Entretien"].map((status, index) => {
-            return (<CardBoard candidates={(this.filterByStatus({status}))} status={status} key={index} />)
-          })
-        }
-      </div>
+      <DragDropContextProvider backend={HTML5Backend}>
+        <div className="recruitment">
+          {
+            ["À Rencontrer", "Entretien"].map((status, index) => {
+              return (
+                <CardBoard candidates={(this.filterByStatus({status}))} status={status} key={index} />
+              );
+            })
+          }
+        </div>
+      </DragDropContextProvider>
     );
   }
 }
