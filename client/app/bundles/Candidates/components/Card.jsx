@@ -16,7 +16,9 @@ const cardSource = {
 
     if (dropResult) {
       console.log(`You dropped ${item.candidate_id} vers ${dropResult.status} !`);
-      $.post(`/update_status/${item.candidate_id}/${dropResult.status}`);
+      if(dropResult.status != dropResult.status_fr) {
+       $.post(`/update_status/${item.candidate_id}/${dropResult.status}`);
+      }
     }
   },
 };

@@ -13,7 +13,10 @@ const cardTarget = {
       status = 'interview'
     }
 
-    return { status: status };
+    return {
+      status: status,
+      status_fr: props.status
+    };
   },
 };
 
