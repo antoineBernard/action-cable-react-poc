@@ -14,11 +14,9 @@ class CandidatesController < ApplicationController
   end
 
 
-  def previous_step
+  def update_status
     candidate = Candidate.find(params[:candidate_id])
-    values    = Candidate::STATUS_VALUES
-    new_index = values.find_index(candidate.status) - 1
 
-    candidate.update_attributes(status: values[new_index]) unless new_index < 0
+    candidate.update_attributes(status: params[:status])
   end
 end

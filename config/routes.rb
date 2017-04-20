@@ -6,6 +6,5 @@ Rails.application.routes.draw do
 
   resources :candidates, only: %i(index)
 
-  post 'next_step/:candidate_id',     to: 'candidates#next_step',     as: :next_step
-  post 'previous_step/:candidate_id', to: 'candidates#previous_step', as: :previous_step
+  post 'update_status/:candidate_id/:status', to: 'candidates#update_status', as: :update_status
 end

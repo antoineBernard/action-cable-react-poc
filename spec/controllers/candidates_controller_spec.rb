@@ -17,52 +17,14 @@ RSpec.describe CandidatesController, type: :controller do
     end
   end
 
-  describe "POST next step" do
-    context "with a next step" do
-      let!(:candidate_to_promote) { create :candidate, status: "to_book" }
+  describe "POST update_status" do
+    let!(:candidate_to_promote) { create :candidate, status: "to_book" }
 
-      specify do
-        expect { post :next_step, params: { candidate_id: candidate_to_promote.id } }
-          .to change { candidate_to_promote.reload.status }.from("to_book").to("interview")
+    specify do
+      expect { post :update_status, params: { candidate_id: candidate_to_promote.id , status: 'interview' } }
+        .to change { candidate_to_promote.reload.status }.from("to_book").to("interview")
 
-        expect(response).to have_http_status(:success)
-      end
-    end
-
-    context "without next step" do
-      let!(:candidate_to_promote) { create :candidate, status: "interview" }
-
-      specify do
-        expect { post :next_step, params: { candidate_id: candidate_to_promote.id } }
-          .not_to change { candidate_to_promote.reload.status }
-
-        expect(response).to have_http_status(:success)
-      end
-    end
-  end
-
-  describe "POST previous step" do
-
-    context "with a previous step" do
-      let!(:candidate_to_promote) { create :candidate, status: "interview" }
-
-      specify do
-        expect { post :previous_step, params: { candidate_id: candidate_to_promote.id } }
-          .to change { candidate_to_promote.reload.status }.from("interview").to("to_book")
-
-        expect(response).to have_http_status(:success)
-      end
-    end
-
-    context "without a previous step" do
-      let!(:candidate_to_promote) { create :candidate, status: "to_book" }
-
-      specify do
-        expect { post :previous_step, params: { candidate_id: candidate_to_promote.id } }
-          .not_to change { candidate_to_promote.reload.status }
-
-        expect(response).to have_http_status(:success)
-      end
+      expect(response).to have_http_status(:success)
     end
   end
 end
