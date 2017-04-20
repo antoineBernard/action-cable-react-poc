@@ -31,7 +31,7 @@ export default class Candidates extends React.Component {
   setupSubscription() {
     App.candidate = App.cable.subscriptions.create("CandidateChannel", {
       connected: () => {
-        /* Called when the subscription is ready for use on the server */
+        console.log("User connected !")
       },
 
       received: (data) => {

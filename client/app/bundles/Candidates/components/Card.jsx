@@ -6,7 +6,7 @@ import ItemTypes from './ItemTypes';
 const cardSource = {
   beginDrag(props) {
     return {
-      name: props.candidate.last_name,
+      candidate_id: props.candidate.id,
     };
   },
 
@@ -15,9 +15,8 @@ const cardSource = {
     const dropResult = monitor.getDropResult();
 
     if (dropResult) {
-      window.alert( // eslint-disable-line no-alert
-        `You dropped ${item.name} into ${dropResult.name}!`,
-      );
+      console.log(`You dropped ${item.candidate_id} vers ${dropResult.status} !`);
+      $.post(`/update_status/${item.candidate_id}/${dropResult.status}`);
     }
   },
 };
@@ -31,23 +30,12 @@ export default class Card extends React.Component {
 
   constructor(props, _railsContext) {
     super(props);
-
-    this.nextStep     = this.nextStep.bind(this)
-    this.previousStep = this.previousStep.bind(this)
-  }
-
-  nextStep () {
-    $.post(`/next_step/${this.props.candidate.id}`);
-  }
-
-  previousStep () {
-    $.post(`/previous_step/${this.props.candidate.id}`);
   }
 
   render() {
     const { isDragging, connectDragSource } = this.props;
     const { name } = this.props;
-    const opacity = isDragging ? 0.4 : 1;
+    const opacity = isDragging ? 0 : 1;
 
     var candidate = this.props.candidate;
 

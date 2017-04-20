@@ -5,7 +5,15 @@ import ItemTypes from './ItemTypes';
 
 const cardTarget = {
   drop(props: Props) {
-    return { name: props.status };
+    var status = ''
+
+    if(props.status == "À Rencontrer") {
+      status = 'to_book'
+    } else {
+      status = 'interview'
+    }
+
+    return { status: status };
   },
 };
 
