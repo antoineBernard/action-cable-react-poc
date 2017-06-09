@@ -26,7 +26,7 @@ const cardTarget = {
   canDrop: monitor.canDrop(),
 }))
 
-export default class CardBoard extends React.Component<Props> {
+export default class CardBoard extends React.Component {
   constructor(props, _railsContext) {
     super(props);
   }

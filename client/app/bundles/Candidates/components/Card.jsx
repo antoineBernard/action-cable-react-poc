@@ -5,7 +5,7 @@ import ItemTypes from './ItemTypes';
 const cardSource = {
   beginDrag(props) {
     return {
-      candidate_id: props.candidate.id,
+      candidate_id: props.candidate.id
     };
   },
 
